@@ -7,22 +7,21 @@ public class Student {
 
     private String nim;
     private String name;
-    private int year; // Angkatan
-    private String studyProgram; // Prodi
+    private int year;
+    private String studyProgram;
 
     public Student(String nim, String name, int year, String studyProgram) {
-        // Lakukan validasi dasar di konstruktor, sesuai dengan ekspektasi "validasi data harus tepat"
         if (nim == null || nim.trim().isEmpty()) {
-            throw new IllegalArgumentException("NIM tidak boleh kosong.");
+            throw new IllegalArgumentException();
         }
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nama mahasiswa tidak boleh kosong.");
+            throw new IllegalArgumentException();
         }
-        if (year <= 0 || year > 9999) { // Angkatan harus angka positif yang masuk akal
-            throw new IllegalArgumentException("Angkatan tidak valid.");
+        if (year <= 0) {
+            throw new IllegalArgumentException();
         }
         if (studyProgram == null || studyProgram.trim().isEmpty()) {
-            throw new IllegalArgumentException("Prodi tidak boleh kosong.");
+            throw new IllegalArgumentException();
         }
 
         this.nim = nim;
@@ -31,27 +30,8 @@ public class Student {
         this.studyProgram = studyProgram;
     }
 
-    // Getter methods
-    public String getNim() {
-        return nim;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getStudyProgram() {
-        return studyProgram;
-    }
-
-    // Override toString() untuk format output yang diminta
-    @Override
+     @Override
     public String toString() {
         return nim + "|" + name + "|" + year + "|" + studyProgram;
     }
-
 }
